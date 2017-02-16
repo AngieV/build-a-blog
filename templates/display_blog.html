@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Main Blog</h3>
+
+<form action="/blog" method="post">
+	{% for e in latest_five %}
+	<div>
+		<div class ="title">{{ e.title }}</div>
+		<hr/>
+		<pre class ="txt_content">{{ e.txt_content }}</pre>
+	</div>
+	{% endfor %}
+	<input type="submit" value="Make a new Post"/>
+</form>
+
+{% endblock %}

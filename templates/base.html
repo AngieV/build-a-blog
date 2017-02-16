@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        	<style type="text/css">
+        * 	{
+        	margin-left: 30px;
+        	margin-right: 30px;
+        	}
+        h1 {
+        	color: yellow;
+        	background-color: blue;
+        	font-size: 32px;
+        	font-family: "Arial Black", sans-serif;
+        	}
+		.content {
+			font-family: sans-serif;
+			width: 800px;
+			margin: 30px auto;
+			padding: 10px;
+			}
+		
+		div	{
+			padding: 5px;
+			}
+		.error{ 
+			color: red;
+			}
+		
+		.title {
+			display: block;
+			font-weight: bold;
+			font-size: 20px;
+			font-family: sans-serif;
+			}
+			
+		input[type=text]{
+			width: 450px;
+			font-size: 20px;
+			padding: 4px;
+			}
+		
+		textarea{
+			width: 400px;
+			height: 200px;
+			font-size: 18px;
+			font-family: monospace;
+			}
+		
+		input[type=submit]{
+			font-size: 18px;
+			}
+		
+		hr {
+			margin: 0px auto;
+			}
+	</style>
+    </head>
+    <body>
+        <h1>Blog Central</h1>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
