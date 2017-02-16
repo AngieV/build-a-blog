@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Main Blog</h3>
+<h2>Main Blog</h2>
 
 <form action="/blog" method="post">
 	{% for e in latest_five %}
 	<div>
 		<div class ="title">{{ e.title }}</div>
 		<hr/>
-		<pre class ="txt_content">{{ e.txt_content }}</pre>
+		<p class ="txt_content">{{ e.txt_content }}</p>
 	</div>
 	{% endfor %}
 	<input type="submit" value="Make a new Post"/>
