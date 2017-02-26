@@ -74,14 +74,28 @@ class NewPost(Handler):
             #construct a post listing object
             b = Blog(title=title, txt_content = txt_content)
             b.put()
-            self.redirect("/blog")
+            id = b.key().id()
+            self.redirect("/blog/%s" % id)
         else:     
         #display errors appropriately
             error = "Please provide both a title and content."
             self.render_form(title, txt_content, error)
-              
-
+            
+class ViewPostHandler(Handler):
+    def get(self, id):
+        blogpost = Blog.get_by_id(int(id))
+        if not blogpost:
+            error = "404 Not found: the post you requested does not exist."  
+            self.response.write(error)
+        else:
+            self.response.write(blogpost.title)
+            self.response.write(blogpost.txt_content)
+            #title = blogpost.title
+            #txt_content = blogpost.txt_content
+            #self.render("display_blog.html", title=title, txt_content=txt_content)
+            
 app = webapp2.WSGIApplication([
     ('/blog', DisplayBlog),
-    ('/newpost', NewPost)
+    ('/newpost', NewPost),
+    webapp2.Route('/blog/<id:\d+>', ViewPostHandler)
 ], debug=True)
